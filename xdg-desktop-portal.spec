@@ -4,7 +4,7 @@
 #
 Name     : xdg-desktop-portal
 Version  : 0.11
-Release  : 4
+Release  : 5
 URL      : https://github.com/flatpak/xdg-desktop-portal/releases/download/0.11/xdg-desktop-portal-0.11.tar.xz
 Source0  : https://github.com/flatpak/xdg-desktop-portal/releases/download/0.11/xdg-desktop-portal-0.11.tar.xz
 Summary  : Desktop integration portal
@@ -15,6 +15,7 @@ Requires: xdg-desktop-portal-bin
 Requires: xdg-desktop-portal-data
 Requires: xdg-desktop-portal-license
 Requires: xdg-desktop-portal-locales
+Requires: xdg-desktop-portal-gtk
 BuildRequires : gettext
 BuildRequires : perl(XML::Parser)
 BuildRequires : pkgconfig(flatpak)
@@ -93,7 +94,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1532030080
+export SOURCE_DATE_EPOCH=1532039908
 %configure --disable-static --disable-pipewire --disable-docbook-docs
 make  %{?_smp_mflags}
 
@@ -105,7 +106,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1532030080
+export SOURCE_DATE_EPOCH=1532039908
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/doc/xdg-desktop-portal
 cp COPYING %{buildroot}/usr/share/doc/xdg-desktop-portal/COPYING
