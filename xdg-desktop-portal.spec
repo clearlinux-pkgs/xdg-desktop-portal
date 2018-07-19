@@ -4,7 +4,7 @@
 #
 Name     : xdg-desktop-portal
 Version  : 0.11
-Release  : 3
+Release  : 4
 URL      : https://github.com/flatpak/xdg-desktop-portal/releases/download/0.11/xdg-desktop-portal-0.11.tar.xz
 Source0  : https://github.com/flatpak/xdg-desktop-portal/releases/download/0.11/xdg-desktop-portal-0.11.tar.xz
 Summary  : Desktop integration portal
@@ -13,9 +13,11 @@ License  : LGPL-2.1
 Requires: xdg-desktop-portal-config
 Requires: xdg-desktop-portal-bin
 Requires: xdg-desktop-portal-data
+Requires: xdg-desktop-portal-license
 Requires: xdg-desktop-portal-locales
 BuildRequires : gettext
 BuildRequires : perl(XML::Parser)
+BuildRequires : pkgconfig(flatpak)
 BuildRequires : pkgconfig(fuse)
 BuildRequires : pkgconfig(gio-2.0)
 BuildRequires : pkgconfig(gio-unix-2.0)
@@ -34,6 +36,7 @@ Summary: bin components for the xdg-desktop-portal package.
 Group: Binaries
 Requires: xdg-desktop-portal-data
 Requires: xdg-desktop-portal-config
+Requires: xdg-desktop-portal-license
 
 %description bin
 bin components for the xdg-desktop-portal package.
@@ -66,6 +69,14 @@ Provides: xdg-desktop-portal-devel
 dev components for the xdg-desktop-portal package.
 
 
+%package license
+Summary: license components for the xdg-desktop-portal package.
+Group: Default
+
+%description license
+license components for the xdg-desktop-portal package.
+
+
 %package locales
 Summary: locales components for the xdg-desktop-portal package.
 Group: Default
@@ -82,7 +93,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1524675613
+export SOURCE_DATE_EPOCH=1532030080
 %configure --disable-static --disable-pipewire --disable-docbook-docs
 make  %{?_smp_mflags}
 
@@ -94,8 +105,10 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1524675613
+export SOURCE_DATE_EPOCH=1532030080
 rm -rf %{buildroot}
+mkdir -p %{buildroot}/usr/share/doc/xdg-desktop-portal
+cp COPYING %{buildroot}/usr/share/doc/xdg-desktop-portal/COPYING
 %make_install
 %find_lang xdg-desktop-portal
 
@@ -153,6 +166,10 @@ rm -rf %{buildroot}
 %files dev
 %defattr(-,root,root,-)
 /usr/lib64/pkgconfig/xdg-desktop-portal.pc
+
+%files license
+%defattr(-,root,root,-)
+/usr/share/doc/xdg-desktop-portal/COPYING
 
 %files locales -f xdg-desktop-portal.lang
 %defattr(-,root,root,-)
