@@ -1,3 +1,19 @@
+xdg-desktop-portal 1.0
+======================
+
+* screenshot: Add a color picker api
+* screencast: Bump the pipewire dependency to 0.2.1
+* Improve --help output
+* Small documentation improvements
+
+xdg-desktop-portal 0.99
+=======================
+
+* The NetworkMonitor portal API has been changed to allow access control
+* The Proxy and NetworkMonitor portals only respond to requests from
+  sandboxes with network access
+* The flatpak portal is now documented
+
 xdg-desktop-portal 0.11
 =======================
 
