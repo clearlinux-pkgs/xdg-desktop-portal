@@ -4,7 +4,7 @@
 #
 Name     : xdg-desktop-portal
 Version  : 1.0.2
-Release  : 8
+Release  : 9
 URL      : https://github.com/flatpak/xdg-desktop-portal/releases/download/1.0.2/xdg-desktop-portal-1.0.2.tar.xz
 Source0  : https://github.com/flatpak/xdg-desktop-portal/releases/download/1.0.2/xdg-desktop-portal-1.0.2.tar.xz
 Summary  : Desktop integration portal
@@ -23,6 +23,8 @@ BuildRequires : pkgconfig(fuse)
 BuildRequires : pkgconfig(gio-2.0)
 BuildRequires : pkgconfig(gio-unix-2.0)
 BuildRequires : pkgconfig(glib-2.0)
+BuildRequires : pkgconfig(libpipewire-0.2)
+BuildRequires : pkgconfig(libxml-2.0)
 BuildRequires : sed
 BuildRequires : xmlto
 
@@ -93,7 +95,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1535999302
+export SOURCE_DATE_EPOCH=1536124486
 %configure --disable-static --disable-pipewire --disable-docbook-docs
 make  %{?_smp_mflags}
 
@@ -105,7 +107,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1535999302
+export SOURCE_DATE_EPOCH=1536124486
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/doc/xdg-desktop-portal
 cp COPYING %{buildroot}/usr/share/doc/xdg-desktop-portal/COPYING
