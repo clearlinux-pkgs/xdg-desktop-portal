@@ -1,3 +1,59 @@
+Changes in 1.6.0
+================
+
+- tests: Adapt to libportal api changes
+
+Changes in 1.5.4
+================
+
+- background: Add a signal to the impl api
+- background: Rewrite the monitoring to better track when apps disappear
+- permissions: Fix SetValue handling of GVariant wrapping. This is an api change
+- openuri: Add a per-type always-ask option
+- openuri: Show the app chooser dialog less often
+- memorymonitor: A new portal to let apps receive low memory warnings
+- filetransfer: A new portal to rewrite file paths between sandboxes
+
+Changes in 1.5.3
+================
+
+* Add more tests
+* Translation updates
+* location: Various fixes
+* document portal: Monitor fuse mount
+* openuri: Only ask 3 times to use the same app
+* openuri: Add an 'ask' option
+* Fix build from git
+* email: Allow multiple addresses, cc and bcc
+* filechooser: Allow saving multiple files
+
+Changes in 1.5.2
+================
+
+* Add many more tests, using libportal
+* gamemode: Add a pidfd-based api
+* inhibit: Send a Response signal
+* openuri: Add an OpenDirectory api
+* Translation updates
+
+Changes in 1.5.1
+================
+
+* Add a portal for setting desktop backgrounds
+* Add tests
+* Optionally use libportal (for tests)
+
+Changes in 1.5.0
+================
+
+* Add a secret portal that is meant be used via
+    libsecret inside the sandbox. One backend for
+    this will live in gnome-keyring, others are
+    possible
+* Fix a file descriptor leak
+* Reduce log spam
+* Translation updates
+
 Changes in 1.4.2
 ================
 
