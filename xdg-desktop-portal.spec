@@ -4,7 +4,7 @@
 #
 Name     : xdg-desktop-portal
 Version  : 1.6.0
-Release  : 12
+Release  : 13
 URL      : https://github.com/flatpak/xdg-desktop-portal/releases/download/1.6.0/xdg-desktop-portal-1.6.0.tar.xz
 Source0  : https://github.com/flatpak/xdg-desktop-portal/releases/download/1.6.0/xdg-desktop-portal-1.6.0.tar.xz
 Summary  : Desktop integration portal
@@ -15,7 +15,6 @@ Requires: xdg-desktop-portal-libexec = %{version}-%{release}
 Requires: xdg-desktop-portal-license = %{version}-%{release}
 Requires: xdg-desktop-portal-locales = %{version}-%{release}
 Requires: xdg-desktop-portal-services = %{version}-%{release}
-Requires: xdg-desktop-portal-gtk
 BuildRequires : dbus-bin
 BuildRequires : gettext
 BuildRequires : perl(XML::Parser)
@@ -30,7 +29,6 @@ BuildRequires : pkgconfig(libgeoclue-2.0)
 BuildRequires : pkgconfig(libpipewire-0.2)
 BuildRequires : pkgconfig(libportal)
 BuildRequires : sed
-BuildRequires : xdg-desktop-portal-gtk
 BuildRequires : xmlto
 
 %description
@@ -99,11 +97,11 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1579198690
+export SOURCE_DATE_EPOCH=1586294432
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
-export FCFLAGS="$CFLAGS -fno-lto "
-export FFLAGS="$CFLAGS -fno-lto "
+export FCFLAGS="$FFLAGS -fno-lto "
+export FFLAGS="$FFLAGS -fno-lto "
 export CXXFLAGS="$CXXFLAGS -fno-lto "
 %configure --disable-static --disable-pipewire --disable-docbook-docs
 make  %{?_smp_mflags}
@@ -116,7 +114,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1579198690
+export SOURCE_DATE_EPOCH=1586294432
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/xdg-desktop-portal
 cp %{_builddir}/xdg-desktop-portal-1.6.0/COPYING %{buildroot}/usr/share/package-licenses/xdg-desktop-portal/01a6b4bf79aca9b556822601186afab86e8c4fbf
