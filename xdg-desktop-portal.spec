@@ -4,7 +4,7 @@
 #
 Name     : xdg-desktop-portal
 Version  : 1.7.2
-Release  : 15
+Release  : 16
 URL      : https://github.com/flatpak/xdg-desktop-portal/releases/download/1.7.2/xdg-desktop-portal-1.7.2.tar.xz
 Source0  : https://github.com/flatpak/xdg-desktop-portal/releases/download/1.7.2/xdg-desktop-portal-1.7.2.tar.xz
 Summary  : Desktop integration portal
