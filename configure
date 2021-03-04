@@ -1,1 +1,2 @@
---disable-pipewire --disable-docbook-docs
+--disable-pipewire
+--disable-docbook-docs
