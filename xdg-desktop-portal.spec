@@ -4,7 +4,7 @@
 #
 Name     : xdg-desktop-portal
 Version  : 1.12.1
-Release  : 21
+Release  : 22
 URL      : https://github.com/flatpak/xdg-desktop-portal/releases/download/1.12.1/xdg-desktop-portal-1.12.1.tar.xz
 Source0  : https://github.com/flatpak/xdg-desktop-portal/releases/download/1.12.1/xdg-desktop-portal-1.12.1.tar.xz
 Summary  : Desktop integration portal
@@ -15,6 +15,7 @@ Requires: xdg-desktop-portal-libexec = %{version}-%{release}
 Requires: xdg-desktop-portal-license = %{version}-%{release}
 Requires: xdg-desktop-portal-locales = %{version}-%{release}
 Requires: xdg-desktop-portal-services = %{version}-%{release}
+Requires: pipewire
 BuildRequires : bubblewrap
 BuildRequires : dbus-bin
 BuildRequires : gettext
@@ -98,7 +99,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1640286371
+export SOURCE_DATE_EPOCH=1640894809
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$FFLAGS -fno-lto "
@@ -121,7 +122,7 @@ export XDG_DATA_DIRS="$HOME/.local/share${XDG_DATA_DIRS:+:$XDG_DATA_DIRS}"
 make %{?_smp_mflags} VERBOSE=1 V=1 check || :
 
 %install
-export SOURCE_DATE_EPOCH=1640286371
+export SOURCE_DATE_EPOCH=1640894809
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/xdg-desktop-portal
 cp %{_builddir}/xdg-desktop-portal-1.12.1/COPYING %{buildroot}/usr/share/package-licenses/xdg-desktop-portal/01a6b4bf79aca9b556822601186afab86e8c4fbf
