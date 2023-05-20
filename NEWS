@@ -1,38 +1,38 @@
-Changes in 1.14.6
+Changes in 1.16.0
 =================
-Released: 2022-08-02
+Released: 2022-12-12
 
- - realtime: Remap thread ids
- - realtime: Use correct types
+- Introduce a new background monitoring service. This allows desktop
+  environments to list applications that are running in background, that is,
+  sandboxed applications running without a visible window. Desktop environments
+  can display these background running applications in their interfaces, and
+  allow users to control their execution.
+- Introduce the Global Shortcuts portal. This portal allows applications to
+  register and receive keyboard shortcuts even when they're not focused. This
+  was a highly requested feature, especially on Wayland desktops. There are
+  improvements to come, but portal backends can now implement this new portal.
+- Various CI improvements
+- Translation updates
 
-Changes in 1.14.5
+Changes in 1.15.0
 =================
-Released: 2022-07-19
+Released: 2022-08-11
 
-- realtime: Fix realtime: fix priority type in MakeThreadHighPriority
-
-Changes in 1.14.4
-=================
-Released: 2022-05-04
-
-- background: Fix a regression introduced in 1.14.0 which caused invalid
-  autostart files to be generated.
-
-Changes in 1.14.3
-=================
-Released: 2022-04-14
-
-- remote-desktop: Fix a memory corruption that was causing seg faults
-
-Changes in 1.14.2
-=================
-Released: 2022-03-29
-
-- realtime: Fix a frequent crash with WebKit processes
-- Fix a bug in parsing the app ID from the cgroup on KDE
-- Fix build with old GLib
-- New translation: oc
-- Documentation improvements
+- Add Meson build files. For now, both Autotools and Meson are available
+  in the source tree. Starting from next release, tarballs will be generated
+  using Meson. There is no set date to delete Autotools files, but it will
+  happen at some point in the future. The removal of Autotools will be
+  communicated in advance.
+- Make the Screenshot portal request permission to take screenshots. Frontends
+  that implement the version 2 of org.freedesktop.portal.impl.Screenshot portal
+  can now be aware that the screenshot permission was granted through the new
+  'permission_store_checked' option, and skip any kind of dialog when that is
+  the case.
+- Stop sending the app id quoted in the Background portal
+- Fix a bug in cgroup name parsing
+- Various fixes to the Realtime portal
+- Various CI improvements
+- Translation updates
 
 Changes in 1.14.1
 =================
