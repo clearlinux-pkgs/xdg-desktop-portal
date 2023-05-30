@@ -5,7 +5,7 @@
 #
 Name     : xdg-desktop-portal
 Version  : 1.16.0
-Release  : 29
+Release  : 30
 URL      : https://github.com/flatpak/xdg-desktop-portal/releases/download/1.16.0/xdg-desktop-portal-1.16.0.tar.xz
 Source0  : https://github.com/flatpak/xdg-desktop-portal/releases/download/1.16.0/xdg-desktop-portal-1.16.0.tar.xz
 Summary  : Desktop integration portal
@@ -110,7 +110,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1684603866
+export SOURCE_DATE_EPOCH=1685480470
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
 export FCFLAGS="$FFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
