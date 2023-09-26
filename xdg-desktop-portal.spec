@@ -4,17 +4,18 @@
 # Using build pattern: meson
 #
 Name     : xdg-desktop-portal
-Version  : 1.16.0
-Release  : 30
-URL      : https://github.com/flatpak/xdg-desktop-portal/releases/download/1.16.0/xdg-desktop-portal-1.16.0.tar.xz
-Source0  : https://github.com/flatpak/xdg-desktop-portal/releases/download/1.16.0/xdg-desktop-portal-1.16.0.tar.xz
-Summary  : Desktop integration portal
+Version  : 1.18.0
+Release  : 31
+URL      : https://github.com/flatpak/xdg-desktop-portal/releases/download/1.18.0/xdg-desktop-portal-1.18.0.tar.xz
+Source0  : https://github.com/flatpak/xdg-desktop-portal/releases/download/1.18.0/xdg-desktop-portal-1.18.0.tar.xz
+Summary  : No detailed summary available
 Group    : Development/Tools
 License  : LGPL-2.1
 Requires: xdg-desktop-portal-data = %{version}-%{release}
 Requires: xdg-desktop-portal-libexec = %{version}-%{release}
 Requires: xdg-desktop-portal-license = %{version}-%{release}
 Requires: xdg-desktop-portal-locales = %{version}-%{release}
+Requires: xdg-desktop-portal-man = %{version}-%{release}
 Requires: xdg-desktop-portal-services = %{version}-%{release}
 Requires: pipewire
 BuildRequires : bubblewrap
@@ -34,6 +35,7 @@ BuildRequires : pkgconfig(libgeoclue-2.0)
 BuildRequires : pkgconfig(libportal)
 BuildRequires : pkgconfig(libsystemd)
 BuildRequires : pkgconfig(systemd)
+BuildRequires : pypi-docutils
 # Suppress stripping binaries
 %define __strip /bin/true
 %define debug_package %{nil}
@@ -89,6 +91,14 @@ Group: Default
 locales components for the xdg-desktop-portal package.
 
 
+%package man
+Summary: man components for the xdg-desktop-portal package.
+Group: Default
+
+%description man
+man components for the xdg-desktop-portal package.
+
+
 %package services
 Summary: services components for the xdg-desktop-portal package.
 Group: Systemd services
@@ -99,10 +109,10 @@ services components for the xdg-desktop-portal package.
 
 
 %prep
-%setup -q -n xdg-desktop-portal-1.16.0
-cd %{_builddir}/xdg-desktop-portal-1.16.0
+%setup -q -n xdg-desktop-portal-1.18.0
+cd %{_builddir}/xdg-desktop-portal-1.18.0
 pushd ..
-cp -a xdg-desktop-portal-1.16.0 buildavx2
+cp -a xdg-desktop-portal-1.18.0 buildavx2
 popd
 
 %build
@@ -110,7 +120,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1685480470
+export SOURCE_DATE_EPOCH=1695748884
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
 export FCFLAGS="$FFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
@@ -150,11 +160,13 @@ DESTDIR=%{buildroot} ninja -C builddir install
 /usr/share/dbus-1/interfaces/org.freedesktop.impl.portal.Account.xml
 /usr/share/dbus-1/interfaces/org.freedesktop.impl.portal.AppChooser.xml
 /usr/share/dbus-1/interfaces/org.freedesktop.impl.portal.Background.xml
+/usr/share/dbus-1/interfaces/org.freedesktop.impl.portal.Clipboard.xml
 /usr/share/dbus-1/interfaces/org.freedesktop.impl.portal.DynamicLauncher.xml
 /usr/share/dbus-1/interfaces/org.freedesktop.impl.portal.Email.xml
 /usr/share/dbus-1/interfaces/org.freedesktop.impl.portal.FileChooser.xml
 /usr/share/dbus-1/interfaces/org.freedesktop.impl.portal.GlobalShortcuts.xml
 /usr/share/dbus-1/interfaces/org.freedesktop.impl.portal.Inhibit.xml
+/usr/share/dbus-1/interfaces/org.freedesktop.impl.portal.InputCapture.xml
 /usr/share/dbus-1/interfaces/org.freedesktop.impl.portal.Lockdown.xml
 /usr/share/dbus-1/interfaces/org.freedesktop.impl.portal.Notification.xml
 /usr/share/dbus-1/interfaces/org.freedesktop.impl.portal.PermissionStore.xml
@@ -170,6 +182,7 @@ DESTDIR=%{buildroot} ninja -C builddir install
 /usr/share/dbus-1/interfaces/org.freedesktop.portal.Account.xml
 /usr/share/dbus-1/interfaces/org.freedesktop.portal.Background.xml
 /usr/share/dbus-1/interfaces/org.freedesktop.portal.Camera.xml
+/usr/share/dbus-1/interfaces/org.freedesktop.portal.Clipboard.xml
 /usr/share/dbus-1/interfaces/org.freedesktop.portal.Device.xml
 /usr/share/dbus-1/interfaces/org.freedesktop.portal.Documents.xml
 /usr/share/dbus-1/interfaces/org.freedesktop.portal.DynamicLauncher.xml
@@ -179,6 +192,7 @@ DESTDIR=%{buildroot} ninja -C builddir install
 /usr/share/dbus-1/interfaces/org.freedesktop.portal.GameMode.xml
 /usr/share/dbus-1/interfaces/org.freedesktop.portal.GlobalShortcuts.xml
 /usr/share/dbus-1/interfaces/org.freedesktop.portal.Inhibit.xml
+/usr/share/dbus-1/interfaces/org.freedesktop.portal.InputCapture.xml
 /usr/share/dbus-1/interfaces/org.freedesktop.portal.Location.xml
 /usr/share/dbus-1/interfaces/org.freedesktop.portal.MemoryMonitor.xml
 /usr/share/dbus-1/interfaces/org.freedesktop.portal.NetworkMonitor.xml
@@ -221,6 +235,10 @@ DESTDIR=%{buildroot} ninja -C builddir install
 %files license
 %defattr(0644,root,root,0755)
 /usr/share/package-licenses/xdg-desktop-portal/01a6b4bf79aca9b556822601186afab86e8c4fbf
+
+%files man
+%defattr(0644,root,root,0755)
+/usr/share/man/man5/portals.conf.5
 
 %files services
 %defattr(-,root,root,-)
