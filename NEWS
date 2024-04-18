@@ -1,3 +1,44 @@
+Changes in 1.18.4
+=================
+Released: 2024-04-18
+
+- Don't allow commandline arrays when the first commandline item starts with
+  whitespace or hyphen. (CVE-2024-32462)
+- Do not store device access permission if it returned an error.
+- Fix crash with config files without a default backend set.
+
+Changes in 1.18.3
+=================
+Released: 2024-04-04
+
+- Don't try to read D-Bus object properties of Request objects on construction.
+- Fix various memory and file descriptor leaks.
+- Minuscule optimization to the ScreenCast portal so that it stores restoration
+  data with a single D-Bus call, instead of two.
+- Fix a crash in the OpenURI file when trying to open a non-existing file.
+- Various smaller bug fixes.
+
+Changes in 1.18.2
+=================
+Released: 2023-11-22
+
+- Pass the token to the OpenURI portal and, when missing, an empty string.
+- Fix various memory and file descriptor leaks in the Document portal.
+- Make files and folders openend with the Document portal close properly. This
+  should fix cases where the Document portal prevented external devices from
+  unmounting, due to files inside them not getting closed after applications
+  stop using them.
+- Implement FUSE getlk and setlk callbacks.This should enable using sqlite3
+  through the Document portal.
+- Properly resolve fd symlinks before opening them with O_NOFOLLOW.
+- Fix cases where the portal id is assumed to match the .desktop file name.
+- Allow sending directories in the file transfer portal. This should make it
+  possible to, among other things, drag and drop folders and files simultaneously
+  from and to sandboxed applications.
+- Fallback to a hardcoded check to xdg-desktop-portal-gtk in the absence of any
+  other portal or configuration file, as a last resort mechanism.
+- Various smaller fixes to the build system.
+
 Changes in 1.18.1
 =================
 Released: 2023-10-26

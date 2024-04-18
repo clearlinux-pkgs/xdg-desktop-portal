@@ -1,4 +1,4 @@
-1.18.1
+1.18.4
 fuse-dev
 geoclue-dev
 json-glib-dev
@@ -10,4 +10,5 @@ pkgconfig(libgeoclue-2.0)
 pkgconfig(libportal)
 pkgconfig(libsystemd)
 pkgconfig(systemd)
+pypi(packaging)
 pypi-docutils
